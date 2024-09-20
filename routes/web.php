@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function(){
     
@@ -31,6 +29,12 @@ Route::middleware(['auth'])->group(function(){
     Route::post('update-store/{id}', [StoreController::class, 'update'])->name('update');
     Route::delete('delete-store/{id}', [StoreController::class, 'destroy'])->name('destroy');
 
+});
+
+Route::prefix('admin')->middleware(['auth', 'checkAuthUserRole'])->group(function(){
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+    Route::get('users-list', [AdminController::class, 'usersList'])->name('admin-user-list');
+    Route::get('store-list', [AdminController::class, 'storeList'])->name('admin-store-list');
 });
 
 

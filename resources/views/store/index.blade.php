@@ -34,10 +34,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Course</th>
-                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Address</th>
+                                    <th>Shop Image</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
